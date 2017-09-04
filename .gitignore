@@ -3,3 +3,6 @@
 
 # Editor backup files
 *~
+
+# Test runner binary
+test
