@@ -16,5 +16,9 @@ Installation
 Usage
 =====
 
+::
+
+   #include "drylib.h"
+
 Reference
 =========
