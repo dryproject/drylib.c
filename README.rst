@@ -22,6 +22,8 @@ Prerequisites
 Features
 ========
 
+* All exported public symbols are prefixed with ``dry_``.
+
 Caveats
 =======
 
