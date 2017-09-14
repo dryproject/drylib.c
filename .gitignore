@@ -7,5 +7,8 @@
 # rst2html outputs
 *.html
 
+# Object files
+*.o
+
 # Test runner binary
 test
