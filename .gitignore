@@ -4,5 +4,8 @@
 # Editor backup files
 *~
 
+# rst2html outputs
+*.html
+
 # Test runner binary
 test
