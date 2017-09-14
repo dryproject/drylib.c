@@ -1,0 +1,27 @@
+# https://docs.travis-ci.com/user/languages/c/
+language: c
+sudo: false
+matrix:
+  include:
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-7
+      env:
+        - ENV="gcc-7 -std=c11"
+    - os: linux
+      addons:
+        apt:
+          sources:
+            - llvm-toolchain-trusty-5.0
+          packages:
+            - clang-5.0
+      env:
+        - ENV="clang-5.0 -std=c11"
+before_install:
+  - export CC="$ENV"
+script:
+  - make && make check

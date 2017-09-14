@@ -1,5 +1,5 @@
-CC = cc -std=c11
-PANDOC = pandoc
+CC ?= cc -std=c11
+PANDOC ?= pandoc
 
 PACKAGE :=
 VERSION := $(shell cat VERSION)
