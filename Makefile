@@ -1,6 +1,8 @@
+AR       ?= ar
 CC       ?= cc -std=c11
 CPPFLAGS ?=
 CPPFLAGS += -I src
+RANLIB   ?= ranlib
 
 PANDOC   ?= pandoc
 
@@ -9,7 +11,12 @@ VERSION  := $(shell cat VERSION)
 
 SOURCES  :=
 
-TARGETS  := test
+TARGETS  := dry.a test
+OBJECTS  :=             \
+  src/dry/base.o        \
+  src/dry/text/ascii.o  \
+  src/dry/text/printf.o \
+  src/dry/text/utf8.o
 
 %.html: %.rst
 	$(PANDOC) -o $@ -t html5 -s $<
@@ -20,7 +27,11 @@ TARGETS  := test
 %: %.o
 	$(CC) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
 
-test: test.o src/dry/base.o
+dry.a: $(OBJECTS)
+	$(AR) rcs $@ $^
+	$(RANLIB) $@
+
+test: test.o dry.a
 
 all: build
 
@@ -39,7 +50,7 @@ uninstall:
 	@echo "not implemented"; exit 2 # TODO
 
 clean:
-	@rm -f *~ *.o src/*.o src/dry/*.o $(TARGETS)
+	@rm -f *~ $(TARGETS) $(OBJECTS)
 
 distclean: clean
 

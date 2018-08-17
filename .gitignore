@@ -8,6 +8,7 @@
 *.html
 
 # Object files
+*.a
 *.o
 
 # Test runner binary
