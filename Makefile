@@ -1,12 +1,15 @@
-CC ?= cc -std=c11
-PANDOC ?= pandoc
+CC       ?= cc -std=c11
+CPPFLAGS ?=
+CPPFLAGS += -I src
 
-PACKAGE :=
-VERSION := $(shell cat VERSION)
+PANDOC   ?= pandoc
 
-SOURCES :=
+PACKAGE  :=
+VERSION  := $(shell cat VERSION)
 
-TARGETS := test
+SOURCES  :=
+
+TARGETS  := test
 
 %.html: %.rst
 	$(PANDOC) -o $@ -t html5 -s $<
@@ -17,7 +20,7 @@ TARGETS := test
 %: %.o
 	$(CC) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
 
-test: test.o drylib.o
+test: test.o src/dry/base.o
 
 all: build
 
@@ -36,7 +39,7 @@ uninstall:
 	@echo "not implemented"; exit 2 # TODO
 
 clean:
-	@rm -f *~ *.o $(TARGETS)
+	@rm -f *~ *.o src/*.o src/dry/*.o $(TARGETS)
 
 distclean: clean
 
