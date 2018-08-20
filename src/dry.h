@@ -2,7 +2,7 @@
 
 #pragma once
 
-#if __STDC_VERSION__ < 201112L
+#if !__cplusplus && __STDC_VERSION__ < 201112L
 #error "DRYlib for C requires a C11 compiler (CFLAGS='-std=c11')"
 #endif
 
@@ -10,4 +10,5 @@
 
 #include "dry/base.h"
 #include "dry/text/ascii.h"
+#include "dry/text/printf.h"
 #include "dry/text/utf8.h"

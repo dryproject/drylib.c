@@ -2,7 +2,8 @@ AR       ?= ar
 CC       ?= cc
 CXX      ?= c++
 CPPFLAGS ?=
-CPPFLAGS += -I src
+CPPFLAGS += -I src -I ../drylib.cpp/src
+CPPFLAGS += -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
 CFLAGS   ?=
 CFLAGS   += -std=c11
 CXXFLAGS ?=
@@ -11,7 +12,7 @@ RANLIB   ?= ranlib
 
 PANDOC   ?= pandoc
 
-PACKAGE  :=
+PACKAGE  := drylib-c
 VERSION  := $(shell cat VERSION)
 
 SOURCES  :=
@@ -36,8 +37,7 @@ OBJECTS  :=             \
 	$(CC) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
 
 dry.a: $(OBJECTS)
-	$(AR) rcs $@ $^
-	$(RANLIB) $@
+	$(AR) rcs $@ $^ && $(RANLIB) $@
 
 test: test.o dry.a
 
@@ -58,12 +58,12 @@ uninstall:
 	@echo "not implemented"; exit 2 # TODO
 
 clean:
-	@rm -f *~ $(TARGETS) $(OBJECTS)
+	@rm -f *~ *.o $(TARGETS) $(OBJECTS)
 
 distclean: clean
 
 mostlyclean: clean
 
-.PHONY: check dist install clean distclean mostlyclean
+.PHONY: check dist install uninstall clean distclean mostlyclean
 .SECONDARY:
 .SUFFIXES:
