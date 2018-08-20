@@ -1,13 +1,17 @@
 /* This is free and unencumbered software released into the public domain. */
 
-#pragma once
+#ifndef __cplusplus
+#error "DRYlib for C requires a C++ compiler to build"
+#endif
 
-#if !__cplusplus && __STDC_VERSION__ < 201112L
-#error "DRYlib for C requires a C11 compiler (CFLAGS='-std=c11')"
+#if __cplusplus < 201703L
+#error "DRYlib for C requires a C++17 compiler to build (CXXFLAGS='-std=c++17')"
 #endif
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "../base.h"
+#include "base.h"
 
 ////////////////////////////////////////////////////////////////////////////////
+
+extern "C" void dry_base() {}

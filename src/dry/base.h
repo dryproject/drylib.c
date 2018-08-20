@@ -2,7 +2,7 @@
 
 #pragma once
 
-#if __STDC_VERSION__ < 201112L
+#if !__cplusplus && __STDC_VERSION__ < 201112L
 #error "DRYlib for C requires a C11 compiler (CFLAGS='-std=c11')"
 #endif
 
@@ -13,7 +13,11 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
+#ifndef __cplusplus
 typedef _Bool dry_bool_t;
+#else
+typedef bool dry_bool_t;
+#endif
 
 typedef uint32_t dry_char_t;
 
@@ -88,3 +92,5 @@ typedef struct dry_complex {
 } dry_complex_t;
 
 ////////////////////////////////////////////////////////////////////////////////
+
+typedef struct dry_string dry_string_t;

@@ -1,7 +1,12 @@
 AR       ?= ar
-CC       ?= cc -std=c11
+CC       ?= cc
+CXX      ?= c++
 CPPFLAGS ?=
 CPPFLAGS += -I src
+CFLAGS   ?=
+CFLAGS   += -std=c11
+CXXFLAGS ?=
+CXXFLAGS += -std=c++17
 RANLIB   ?= ranlib
 
 PANDOC   ?= pandoc
@@ -23,6 +28,9 @@ OBJECTS  :=             \
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -o $@ -c $<
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -o $@ -c $<
 
 %: %.o
 	$(CC) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
