@@ -8,6 +8,6 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "dry/base.h"
-#include "dry/meta.h"
-#include "dry/text.h"
+#include "text/ascii.h"
+#include "text/printf.h"
+#include "text/utf8.h"

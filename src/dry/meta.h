@@ -8,6 +8,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "dry/base.h"
-#include "dry/meta.h"
-#include "dry/text.h"
+#include "meta/error.h"
+#include "meta/feature.h"
+#include "meta/memory.h"
+#include "meta/module.h"
+#include "meta/version.h"
