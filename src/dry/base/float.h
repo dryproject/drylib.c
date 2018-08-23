@@ -8,15 +8,8 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "base/bool.h"
-#include "base/char.h"
-#include "base/complex.h"
-#include "base/float.h"
-#include "base/integer.h"
-#include "base/natural.h"
-#include "base/rational.h"
-#include "base/real.h"
-#include "base/string.h"
-#include "base/word.h"
+typedef double dry_float_t;
 
-#include "base/optional.h"
+typedef float dry_float32_t;
+
+typedef double dry_float64_t;

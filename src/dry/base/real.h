@@ -8,17 +8,14 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "base/float.h"
-#include "base/natural.h"
+#include "float.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef dry_nat_t dry_qty_bit_t;
+typedef struct dry_real dry_real_t;
 
-typedef dry_nat_t dry_qty_byte_t;
+////////////////////////////////////////////////////////////////////////////////
 
-typedef dry_float_t dry_qty_degree_t;
-
-typedef dry_float_t dry_qty_percent_t;
-
-typedef dry_float_t dry_qty_radian_t;
+typedef struct dry_real {
+  dry_float64_t value; // TODO
+} dry_real_t;

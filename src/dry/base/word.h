@@ -8,17 +8,22 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "base/float.h"
-#include "base/natural.h"
+#include <stdint.h>  /* for __WORDSIZE, uint*_t */
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef dry_nat_t dry_qty_bit_t;
+#if __WORDSIZE == 32
+typedef uint32_t dry_word_t;
+#elif __WORDSIZE == 64
+typedef uint64_t dry_word_t;
+#else
+#error "unsupported size for __WORDSIZE"
+#endif
 
-typedef dry_nat_t dry_qty_byte_t;
+typedef uint8_t dry_word8_t;
 
-typedef dry_float_t dry_qty_degree_t;
+typedef uint16_t dry_word16_t;
 
-typedef dry_float_t dry_qty_percent_t;
+typedef uint32_t dry_word32_t;
 
-typedef dry_float_t dry_qty_radian_t;
+typedef uint64_t dry_word64_t;

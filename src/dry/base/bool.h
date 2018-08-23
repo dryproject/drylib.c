@@ -8,17 +8,12 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "base/float.h"
-#include "base/natural.h"
+#include <stdbool.h> /* for _Bool */
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef dry_nat_t dry_qty_bit_t;
-
-typedef dry_nat_t dry_qty_byte_t;
-
-typedef dry_float_t dry_qty_degree_t;
-
-typedef dry_float_t dry_qty_percent_t;
-
-typedef dry_float_t dry_qty_radian_t;
+#ifndef __cplusplus
+typedef _Bool dry_bool_t;
+#else
+typedef bool dry_bool_t;
+#endif

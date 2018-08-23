@@ -8,17 +8,10 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "base/float.h"
-#include "base/natural.h"
+#include "integer.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 
-typedef dry_nat_t dry_qty_bit_t;
+typedef unsigned long dry_nat_t;
 
-typedef dry_nat_t dry_qty_byte_t;
-
-typedef dry_float_t dry_qty_degree_t;
-
-typedef dry_float_t dry_qty_percent_t;
-
-typedef dry_float_t dry_qty_radian_t;
+typedef dry_integer_t dry_natural_t;
