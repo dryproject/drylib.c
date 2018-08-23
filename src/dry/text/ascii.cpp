@@ -54,7 +54,7 @@ dry_text_ascii_make_string(const char* data) {
 
 dry_string_t*
 dry_text_ascii_make_string_with_size(const char* data,
-                                     const dry_nat_t size) {
+                                     const dry_qty_byte_t size) {
   require_nonnull_argument(data);
   return wrap_copy(dry::text::ascii::make_string(data, size));
 }
@@ -152,7 +152,7 @@ dry_text_ascii_equals(const dry_string_t* const string1,
   return dry::text::ascii::equals(unwrap(string1), unwrap(string2));
 }
 
-dry_nat_t
+dry_qty_byte_t
 dry_text_ascii_length(const dry_string_t* const string) {
   require_nonnull_argument(string);
   return dry::text::ascii::length(unwrap(string));
@@ -175,7 +175,7 @@ dry_text_ascii_reverse(const dry_string_t* const string) {
   return wrap_copy(dry::text::ascii::reverse(unwrap(string)));
 }
 
-dry_nat_t
+dry_qty_byte_t
 dry_text_ascii_size(const dry_string_t* const string) {
   require_nonnull_argument(string);
   return dry::text::ascii::size(unwrap(string));

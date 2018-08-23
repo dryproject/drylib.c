@@ -9,6 +9,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 
 #include "../base.h"
+#include "../qty.h"
 
 #ifdef __cplusplus
 extern "C" {
@@ -29,7 +30,7 @@ dry_string_t* dry_text_ascii_make_string(const char* data);
 /**
  * Implements dry:text/ascii/string.
  */
-dry_string_t* dry_text_ascii_make_string_with_size(const char* data, dry_nat_t size);
+dry_string_t* dry_text_ascii_make_string_with_size(const char* data, dry_qty_byte_t size);
 
 /*
  * Implements dry:text/ascii/blank?.
@@ -99,7 +100,7 @@ dry_bool_t dry_text_ascii_equals(const dry_string_t* string1, const dry_string_t
 /**
  * Implements dry:text/ascii/length.
  */
-dry_nat_t dry_text_ascii_length(const dry_string_t* string);
+dry_qty_byte_t dry_text_ascii_length(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/nth.
@@ -114,7 +115,7 @@ dry_string_t* dry_text_ascii_reverse(const dry_string_t* string);
 /**
  * Implements dry:text/ascii/size.
  */
-dry_nat_t dry_text_ascii_size(const dry_string_t* string);
+dry_qty_byte_t dry_text_ascii_size(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/starts-with?.

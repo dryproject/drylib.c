@@ -8,7 +8,16 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "dry/base.h"
-#include "dry/meta.h"
-#include "dry/qty.h"
-#include "dry/text.h"
+#include "base/types.h"
+
+////////////////////////////////////////////////////////////////////////////////
+
+typedef dry_nat_t dry_qty_bit_t;
+
+typedef dry_nat_t dry_qty_byte_t;
+
+typedef dry_float_t dry_qty_degree_t;
+
+typedef dry_float_t dry_qty_percent_t;
+
+typedef dry_float_t dry_qty_radian_t;
