@@ -14,9 +14,9 @@
 #include "base/float.h"
 #include "base/integer.h"
 #include "base/natural.h"
+#include "base/optional.h"
+#include "base/predicate.h"
 #include "base/rational.h"
 #include "base/real.h"
 #include "base/string.h"
 #include "base/word.h"
-
-#include "base/optional.h"
