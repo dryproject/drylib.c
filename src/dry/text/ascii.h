@@ -104,7 +104,7 @@ dry_nat_t dry_text_ascii_length(const dry_string_t* string);
 /**
  * Implements dry:text/ascii/nth.
  */
-void dry_text_ascii_nth(const dry_string_t* string, dry_nat_t index); // FIXME
+dry_optional_char_t dry_text_ascii_nth(const dry_string_t* string, dry_nat_t index);
 
 /**
  * Implements dry:text/ascii/reverse.

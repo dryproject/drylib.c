@@ -158,12 +158,15 @@ dry_text_ascii_length(const dry_string_t* const string) {
   return dry::text::ascii::length(unwrap(string));
 }
 
-void // FIXME
+dry_optional_char_t
 dry_text_ascii_nth(const dry_string_t* const string,
                    const dry_nat_t index) {
   require_nonnull_argument(string);
-  const auto result = dry::text::ascii::nth(unwrap(string), index);
-  return (void)result; // TODO
+  const auto unwrapped = dry::text::ascii::nth(unwrap(string), index);
+  dry_optional_char_t result;
+  result.has_value = unwrapped.has_value();
+  result.value = unwrapped.value_or(0);
+  return result;
 }
 
 dry_string_t*

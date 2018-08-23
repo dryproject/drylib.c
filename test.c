@@ -25,6 +25,11 @@ test_text_ascii(void) {
   assert(dry_text_ascii_size(foobar) == 6);
   assert(dry_text_ascii_length(foobar) == 6);
   assert(dry_text_ascii_equals(foobar, foobar) == true);
+  assert(dry_text_ascii_nth(foobar, 0).has_value == true);
+  assert(dry_text_ascii_nth(foobar, 0).value == 'f');
+  assert(dry_text_ascii_nth(foobar, 5).has_value == true);
+  assert(dry_text_ascii_nth(foobar, 5).value == 'r');
+  assert(dry_text_ascii_nth(foobar, 6).has_value == false);
   //assert(dry_text_ascii_starts_with(foobar, "")); // TODO
   //assert(dry_text_ascii_ends_with(foobar, "")); // TODO
   //assert(dry_text_ascii_contains(foobar, "")); // TODO
