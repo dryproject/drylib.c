@@ -19,97 +19,142 @@ extern "C" {
 /**
  * Implements dry:text/ascii/string.
  */
+dry_string_t* dry_text_ascii_make_string_of_char(dry_char_t character);
+
+/**
+ * Implements dry:text/ascii/string.
+ */
 dry_string_t* dry_text_ascii_make_string(const char* data);
+
+/**
+ * Implements dry:text/ascii/string.
+ */
+dry_string_t* dry_text_ascii_make_string_with_size(const char* data, dry_nat_t size);
 
 /*
  * Implements dry:text/ascii/blank?.
  */
-void dry_text_ascii_is_blank();
+dry_bool_t dry_text_ascii_is_blank_char(dry_char_t character);
+
+/*
+ * Implements dry:text/ascii/blank?.
+ */
+dry_bool_t dry_text_ascii_is_blank_string(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/compare.
  */
-void dry_text_ascii_compare();
+dry_int_t dry_text_ascii_compare_char(dry_char_t character1, dry_char_t character2);
+
+/**
+ * Implements dry:text/ascii/compare.
+ */
+dry_int_t dry_text_ascii_compare(const dry_string_t* string1, const dry_string_t* string2);
 
 /**
  * Implements dry:text/ascii/concat.
  */
-void dry_text_ascii_concat();
+dry_string_t* dry_text_ascii_concat(const dry_string_t* string1, const dry_string_t* string2);
 
 /**
  * Implements dry:text/ascii/contains?.
  */
-void dry_text_ascii_contains_char();
+dry_bool_t dry_text_ascii_contains_char(const dry_string_t* string, dry_char_t character);
 
 /**
  * Implements dry:text/ascii/contains?.
  */
-void dry_text_ascii_contains();
+dry_bool_t dry_text_ascii_contains_string(const dry_string_t* string, const dry_string_t* substring);
+
+/**
+ * Implements dry:text/ascii/contains?.
+ */
+dry_bool_t dry_text_ascii_contains(const dry_string_t* string, const char* substring);
 
 /**
  * Implements dry:text/ascii/empty?.
  */
-void dry_text_ascii_is_empty();
+dry_bool_t dry_text_ascii_is_empty(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/ends-with?.
  */
-void dry_text_ascii_ends_with();
+dry_bool_t dry_text_ascii_ends_with_char(const dry_string_t* string, dry_char_t suffix);
+
+/**
+ * Implements dry:text/ascii/ends-with?.
+ */
+dry_bool_t dry_text_ascii_ends_with_string(const dry_string_t* string, const dry_string_t* suffix);
+
+/**
+ * Implements dry:text/ascii/ends-with?.
+ */
+dry_bool_t dry_text_ascii_ends_with(const dry_string_t* string, const char* suffix);
 
 /**
  * Implements dry:text/ascii/equals?.
  */
-void dry_text_ascii_equals();
+dry_bool_t dry_text_ascii_equals(const dry_string_t* string1, const dry_string_t* string2);
 
 /**
  * Implements dry:text/ascii/length.
  */
-void dry_text_ascii_length();
+dry_nat_t dry_text_ascii_length(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/nth.
  */
-void dry_text_ascii_nth();
+void dry_text_ascii_nth(const dry_string_t* string, dry_nat_t index); // FIXME
 
 /**
  * Implements dry:text/ascii/reverse.
  */
-void dry_text_ascii_reverse();
+dry_string_t* dry_text_ascii_reverse(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/size.
  */
-void dry_text_ascii_size();
+dry_nat_t dry_text_ascii_size(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/starts-with?.
  */
-void dry_text_ascii_starts_with();
+dry_bool_t dry_text_ascii_starts_with_char(const dry_string_t* string, dry_char_t prefix);
+
+/**
+ * Implements dry:text/ascii/starts-with?.
+ */
+dry_bool_t dry_text_ascii_starts_with_string(const dry_string_t* string, const dry_string_t* prefix);
+
+/**
+ * Implements dry:text/ascii/starts-with?.
+ */
+dry_bool_t dry_text_ascii_starts_with(const dry_string_t* string, const char* prefix);
 
 /**
  * Implements dry:text/ascii/trim.
  */
-void dry_text_ascii_trim();
+dry_string_t* dry_text_ascii_trim(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/trim-left.
  */
-void dry_text_ascii_trim_left();
+dry_string_t* dry_text_ascii_trim_left(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/trim-right.
  */
-void dry_text_ascii_trim_right();
+dry_string_t* dry_text_ascii_trim_right(const dry_string_t* string);
 
 /**
  * Implements dry:text/ascii/valid?.
  */
-void dry_text_ascii_is_valid_char();
+dry_bool_t dry_text_ascii_is_valid_char(dry_char_t character);
 
 /**
  * Implements dry:text/ascii/valid?.
  */
-void dry_text_ascii_is_valid();
+dry_bool_t dry_text_ascii_is_valid(const dry_string_t* string);
 
 ////////////////////////////////////////////////////////////////////////////////
 

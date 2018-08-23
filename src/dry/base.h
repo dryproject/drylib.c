@@ -47,6 +47,8 @@ typedef __int128 dry_int128_t; // TODO: protect with macro
 
 typedef struct dry_integer dry_integer_t;
 
+typedef unsigned long dry_nat_t;
+
 typedef dry_integer_t dry_natural_t;
 
 typedef struct dry_rational dry_rational_t;
