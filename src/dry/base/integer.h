@@ -14,6 +14,8 @@
 
 typedef long dry_int_t;
 
+typedef int8_t dry_int4_t;
+
 typedef int8_t dry_int8_t;
 
 typedef int16_t dry_int16_t;
@@ -22,8 +24,8 @@ typedef int32_t dry_int32_t;
 
 typedef int64_t dry_int64_t;
 
-#if 1
-typedef __int128 dry_int128_t; // TODO: protect with macro
+#ifdef __SIZEOF_INT128__
+typedef __int128 dry_int128_t;
 #endif
 
 typedef struct dry_integer dry_integer_t;
@@ -31,5 +33,9 @@ typedef struct dry_integer dry_integer_t;
 ////////////////////////////////////////////////////////////////////////////////
 
 typedef struct dry_integer {
-  dry_int128_t value; // TODO
+#ifdef __SIZEOF_INT128__
+  __int128 value;
+#else
+  intmax_t value;
+#endif
 } dry_integer_t;
