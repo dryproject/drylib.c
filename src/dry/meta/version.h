@@ -8,12 +8,18 @@
 
 ////////////////////////////////////////////////////////////////////////////////
 
-#include "dry/base.h"
-#include "dry/meta/error.h"
-#include "dry/meta/feature.h"
-#include "dry/meta/memory.h"
-#include "dry/meta/module.h"
-#include "dry/meta/version.h"
-#include "dry/text/ascii.h"
-#include "dry/text/printf.h"
-#include "dry/text/utf8.h"
+#include "../base.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+////////////////////////////////////////////////////////////////////////////////
+
+// TODO
+
+////////////////////////////////////////////////////////////////////////////////
+
+#ifdef __cplusplus
+} // extern "C"
+#endif

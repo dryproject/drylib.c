@@ -18,10 +18,15 @@ VERSION  := $(shell cat VERSION)
 SOURCES  :=
 
 TARGETS  := dry.a test
-OBJECTS  :=             \
-  src/dry/base.o        \
-  src/dry/text/ascii.o  \
-  src/dry/text/printf.o \
+OBJECTS  :=              \
+  src/dry/base.o         \
+  src/dry/meta/error.o   \
+  src/dry/meta/feature.o \
+  src/dry/meta/memory.o  \
+  src/dry/meta/module.o  \
+  src/dry/meta/version.o \
+  src/dry/text/ascii.o   \
+  src/dry/text/printf.o  \
   src/dry/text/utf8.o
 
 %.html: %.rst
