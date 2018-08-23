@@ -42,6 +42,16 @@ dry_bool_t dry_text_ascii_is_blank_char(dry_char_t character);
  */
 dry_bool_t dry_text_ascii_is_blank_string(const dry_string_t* string);
 
+/*
+ * Implements dry:text/ascii/blank?.
+ */
+#define dry_text_ascii_is_blank(x)                      \
+  _Generic((x),                                         \
+    int: dry_text_ascii_is_blank_char,                  \
+    dry_char_t: dry_text_ascii_is_blank_char,           \
+    const dry_string_t*: dry_text_ascii_is_blank_string \
+  )(x)
+
 /**
  * Implements dry:text/ascii/compare.
  */
@@ -50,7 +60,17 @@ dry_int_t dry_text_ascii_compare_char(dry_char_t character1, dry_char_t characte
 /**
  * Implements dry:text/ascii/compare.
  */
-dry_int_t dry_text_ascii_compare(const dry_string_t* string1, const dry_string_t* string2);
+dry_int_t dry_text_ascii_compare_string(const dry_string_t* string1, const dry_string_t* string2);
+
+/**
+ * Implements dry:text/ascii/compare.
+ */
+#define dry_text_ascii_compare(x, y)                   \
+  _Generic((x),                                        \
+    int: dry_text_ascii_compare_char,                  \
+    dry_char_t: dry_text_ascii_compare_char,           \
+    const dry_string_t*: dry_text_ascii_compare_string \
+  )(x, y)
 
 /**
  * Implements dry:text/ascii/concat.
@@ -70,7 +90,18 @@ dry_bool_t dry_text_ascii_contains_string(const dry_string_t* string, const dry_
 /**
  * Implements dry:text/ascii/contains?.
  */
-dry_bool_t dry_text_ascii_contains(const dry_string_t* string, const char* substring);
+dry_bool_t dry_text_ascii_contains_literal(const dry_string_t* string, const char* substring);
+
+/**
+ * Implements dry:text/ascii/contains?.
+ */
+#define dry_text_ascii_contains(x, y)                    \
+  _Generic((y),                                          \
+    int: dry_text_ascii_contains_char,                   \
+    dry_char_t: dry_text_ascii_contains_char,            \
+    const dry_string_t*: dry_text_ascii_contains_string, \
+    default: dry_text_ascii_contains_literal             \
+  )(x, y)
 
 /**
  * Implements dry:text/ascii/empty?.
@@ -90,7 +121,18 @@ dry_bool_t dry_text_ascii_ends_with_string(const dry_string_t* string, const dry
 /**
  * Implements dry:text/ascii/ends-with?.
  */
-dry_bool_t dry_text_ascii_ends_with(const dry_string_t* string, const char* suffix);
+dry_bool_t dry_text_ascii_ends_with_literal(const dry_string_t* string, const char* suffix);
+
+/**
+ * Implements dry:text/ascii/ends-with?.
+ */
+#define dry_text_ascii_ends_with(x, y)                    \
+  _Generic((y),                                             \
+    int: dry_text_ascii_ends_with_char,                   \
+    dry_char_t: dry_text_ascii_ends_with_char,            \
+    const dry_string_t*: dry_text_ascii_ends_with_string, \
+    default: dry_text_ascii_ends_with_literal             \
+  )(x, y)
 
 /**
  * Implements dry:text/ascii/equals?.
@@ -130,7 +172,18 @@ dry_bool_t dry_text_ascii_starts_with_string(const dry_string_t* string, const d
 /**
  * Implements dry:text/ascii/starts-with?.
  */
-dry_bool_t dry_text_ascii_starts_with(const dry_string_t* string, const char* prefix);
+dry_bool_t dry_text_ascii_starts_with_literal(const dry_string_t* string, const char* prefix);
+
+/**
+ * Implements dry:text/ascii/starts-with?.
+ */
+#define dry_text_ascii_starts_with(x, y)                    \
+  _Generic((y),                                             \
+    int: dry_text_ascii_starts_with_char,                   \
+    dry_char_t: dry_text_ascii_starts_with_char,            \
+    const dry_string_t*: dry_text_ascii_starts_with_string, \
+    default: dry_text_ascii_starts_with_literal             \
+  )(x, y)
 
 /**
  * Implements dry:text/ascii/trim.
@@ -155,7 +208,17 @@ dry_bool_t dry_text_ascii_is_valid_char(dry_char_t character);
 /**
  * Implements dry:text/ascii/valid?.
  */
-dry_bool_t dry_text_ascii_is_valid(const dry_string_t* string);
+dry_bool_t dry_text_ascii_is_valid_string(const dry_string_t* string);
+
+/**
+ * Implements dry:text/ascii/valid?.
+ */
+#define dry_text_ascii_is_valid(x)                      \
+  _Generic((x),                                         \
+    int: dry_text_ascii_is_valid_char,                  \
+    dry_char_t: dry_text_ascii_is_valid_char,           \
+    const dry_string_t*: dry_text_ascii_is_valid_string \
+  )(x)
 
 ////////////////////////////////////////////////////////////////////////////////
 

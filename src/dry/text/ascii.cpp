@@ -77,8 +77,8 @@ dry_text_ascii_compare_char(const dry_char_t character1,
 }
 
 dry_int_t
-dry_text_ascii_compare(const dry_string_t* const string1,
-                       const dry_string_t* const string2) {
+dry_text_ascii_compare_string(const dry_string_t* const string1,
+                              const dry_string_t* const string2) {
   require_nonnull_argument(string1);
   require_nonnull_argument(string2);
   return dry::text::ascii::compare(unwrap(string1), unwrap(string2));
@@ -108,8 +108,8 @@ dry_text_ascii_contains_string(const dry_string_t* const string,
 }
 
 dry_bool_t
-dry_text_ascii_contains(const dry_string_t* const string,
-                        const char* const substring) {
+dry_text_ascii_contains_literal(const dry_string_t* const string,
+                                const char* const substring) {
   require_nonnull_argument(string);
   require_nonnull_argument(substring);
   return dry::text::ascii::contains(unwrap(string), substring);
@@ -137,8 +137,8 @@ dry_text_ascii_ends_with_string(const dry_string_t* const string,
 }
 
 dry_bool_t
-dry_text_ascii_ends_with(const dry_string_t* const string,
-                         const char* const suffix) {
+dry_text_ascii_ends_with_literal(const dry_string_t* const string,
+                                 const char* const suffix) {
   require_nonnull_argument(string);
   require_nonnull_argument(suffix);
   return dry::text::ascii::ends_with(unwrap(string), suffix);
@@ -197,8 +197,8 @@ dry_text_ascii_starts_with_string(const dry_string_t* const string,
 }
 
 dry_bool_t
-dry_text_ascii_starts_with(const dry_string_t* const string,
-                           const char* const prefix) {
+dry_text_ascii_starts_with_literal(const dry_string_t* const string,
+                                   const char* const prefix) {
   require_nonnull_argument(string);
   require_nonnull_argument(prefix);
   return dry::text::ascii::starts_with(unwrap(string), prefix);
@@ -228,7 +228,7 @@ dry_text_ascii_is_valid_char(const dry_char_t character) {
 }
 
 dry_bool_t
-dry_text_ascii_is_valid(const dry_string_t* const string) {
+dry_text_ascii_is_valid_string(const dry_string_t* const string) {
   require_nonnull_argument(string);
   return dry::text::ascii::is_valid(unwrap(string));
 }
