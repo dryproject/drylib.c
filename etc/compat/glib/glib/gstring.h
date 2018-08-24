@@ -1,9 +1,10 @@
 /* This is free and unencumbered software released into the public domain. */
 
 /**
- * Compatibility interface for GLib's string buffer functions.
+ * Compatibility shim for GLib's string buffer functions.
  *
  * @author Arto Bendiken
+ * @see https://drylib.org/xref/glib.html
  * @see https://developer.gnome.org/glib/stable/glib-Strings.html
  */
 
@@ -26,6 +27,10 @@
 typedef dry_string_t GString;
 
 ////////////////////////////////////////////////////////////////////////////////
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 static inline GString*
 g_string_new(const gchar* init) {
@@ -211,3 +216,7 @@ g_string_append_uri_escaped(GString* string, const gchar* unescaped, const gchar
  * @deprecated
  */
 #define g_string_sprintfa g_string_append_printf
+
+#ifdef __cplusplus
+} // extern "C"
+#endif

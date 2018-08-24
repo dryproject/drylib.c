@@ -1,9 +1,10 @@
 /* This is free and unencumbered software released into the public domain. */
 
 /**
- * Compatibility interface for GLib's auto-configured type definitions.
+ * Compatibility shim for GLib's auto-configured type definitions.
  *
  * @author Arto Bendiken
+ * @see https://drylib.org/xref/glib.html
  * @see https://developer.gnome.org/glib/stable/glib-building.html
  */
 
