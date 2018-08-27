@@ -39,5 +39,6 @@ test_text_ascii(void) {
 
 int
 main(int argc, char* argv[]) {
+  test_text_ascii();
   return EXIT_SUCCESS; // TODO
 }

@@ -34,8 +34,8 @@ typedef dry_int16_t gushort; // FIXME
 typedef dry_int32_t guint;   // FIXME
 typedef dry_int64_t gulong;  // FIXME
 
-typedef dry_float16_t gfloat;
-typedef dry_float32_t gdouble;
+typedef dry_float32_t gfloat;
+typedef dry_float64_t gdouble;
 
 typedef void* gpointer;
 typedef const void* gconstpointer;
