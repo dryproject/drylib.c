@@ -4,9 +4,8 @@ VERSION  := $(shell cat VERSION)
 AR       ?= ar
 CC       ?= cc
 CXX      ?= c++
-CPPFLAGS ?=
-CPPFLAGS += -I src -I ../drylib.cpp/src
-CPPFLAGS += -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
+CPPFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror -I ../drylib.cpp/src
+CPPFLAGS += -I src
 CFLAGS   ?=
 CFLAGS   += -std=c11
 CXXFLAGS ?=
