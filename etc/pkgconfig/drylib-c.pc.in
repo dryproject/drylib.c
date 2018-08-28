@@ -1,0 +1,11 @@
+prefix=@prefix@
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir=${prefix}/include
+
+Name: DRYlib for C
+Description: The polyglot programmer's standard library.
+URL: https://drylib.org/c.html
+Version: @version@
+Libs: -L${libdir} -ldry
+Cflags: -I${includedir}

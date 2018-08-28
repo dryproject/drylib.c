@@ -11,6 +11,7 @@ CFLAGS   += -std=c11
 CXXFLAGS ?=
 CXXFLAGS += -std=c++17
 RANLIB   ?= ranlib
+SED      ?= sed
 
 PANDOC   ?= pandoc
 
@@ -43,6 +44,9 @@ TARGETS  := libdry.a
 libdry.a: $(OBJECTS)
 	$(AR) rcs $@ $^ && $(RANLIB) $@
 
+drylib-c.pc: etc/pkgconfig/drylib-c.pc.in
+	$(SED) -e 's:@prefix@:$(prefix):g' -e 's:@version@:$(VERSION):g' $^ > $@
+
 test: test.o libdry.a
 
 all: build
@@ -57,13 +61,16 @@ dist:
 
 installdirs:
 	$(INSTALL) -d $(DESTDIR)$(libdir)
+	$(INSTALL) -d $(DESTDIR)$(libdir)/pkgconfig
 	$(INSTALL) -d $(DESTDIR)$(includedir)
 	$(INSTALL) -d $(DESTDIR)$(includedir)/dry
 	$(INSTALL) -d $(DESTDIR)$(includedir)/dry/base
 	$(INSTALL) -d $(DESTDIR)$(includedir)/dry/meta
 	$(INSTALL) -d $(DESTDIR)$(includedir)/dry/text
 
-install: installdirs $(TARGETS) $(HEADERS)
+install: installdirs drylib-c.pc $(TARGETS) $(HEADERS)
+	$(INSTALL_DATA) drylib-c.pc $(DESTDIR)$(libdir)/pkgconfig/drylib.pc
+	$(INSTALL_DATA) drylib-c.pc $(DESTDIR)$(libdir)/pkgconfig/drylib-c.pc
 	$(foreach file,$(TARGETS),$(INSTALL_DATA) $(file) $(DESTDIR)$(libdir)/$(file);)
 	$(foreach file,$(HEADERS),$(INSTALL_DATA) $(file) $(DESTDIR)$(includedir)/$(file:src/%=%);)
 
