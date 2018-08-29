@@ -10,6 +10,8 @@ CFLAGS   ?=
 CFLAGS   += -std=c11
 CXXFLAGS ?=
 CXXFLAGS += -std=c++17
+LDFLAGS  ?=
+LDFLAGS  += -L.
 RANLIB   ?= ranlib
 SED      ?= sed
 
@@ -78,7 +80,7 @@ uninstall:
 	@echo "not implemented"; exit 2 # TODO
 
 clean:
-	@rm -f *~ *.o $(TARGETS) $(OBJECTS)
+	@rm -f test *~ *.o $(TARGETS) $(OBJECTS)
 
 distclean: clean
 
