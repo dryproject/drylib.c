@@ -4,20 +4,20 @@ VERSION  := $(shell cat VERSION)
 AR       ?= ar
 CC       ?= cc
 CXX      ?= c++
-CPPFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror -I ../drylib.cpp/src
-CPPFLAGS += -I src
-CFLAGS   ?=
-CFLAGS   += -std=c11
-CXXFLAGS ?=
-CXXFLAGS += -std=c++17
-LDFLAGS  ?=
-LDFLAGS  += -L.
+INSTALL  ?= install
+PANDOC   ?= pandoc
 RANLIB   ?= ranlib
 SED      ?= sed
 
-PANDOC   ?= pandoc
+CFLAGS   ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
+CFLAGS   += -std=c11
+CXXFLAGS ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
+CXXFLAGS += -std=c++17
+CPPFLAGS ?= -I ../drylib.cpp/src
+CPPFLAGS += -I src
+LDFLAGS  ?=
+LDFLAGS  += -L.
 
-INSTALL  ?= install
 INSTALL_PROGRAM = $(INSTALL)
 INSTALL_DATA    = $(INSTALL) -m 644
 
@@ -43,11 +43,11 @@ TARGETS  := libdry.a
 %: %.o
 	$(CC) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
 
-libdry.a: $(OBJECTS)
-	$(AR) rcs $@ $^ && $(RANLIB) $@
-
 drylib-c.pc: etc/pkgconfig/drylib-c.pc.in
 	$(SED) -e 's:@prefix@:$(prefix):g' -e 's:@version@:$(VERSION):g' $^ > $@
+
+libdry.a: $(OBJECTS)
+	$(AR) rcs $@ $^ && $(RANLIB) $@
 
 test: test.o libdry.a
 

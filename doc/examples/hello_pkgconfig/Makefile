@@ -1,4 +1,5 @@
 CC       ?= cc
+
 CFLAGS   ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function
 CFLAGS   += -std=c11
 CFLAGS   += $(shell pkg-config --cflags-only-other drylib-c)
@@ -22,7 +23,7 @@ TARGETS  := hello
 
 hello: $(OBJECTS)
 
-all: hello
+all: $(TARGETS)
 
 clean:
 	@rm -f *~ $(TARGETS) $(OBJECTS)

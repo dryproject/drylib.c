@@ -1,7 +1,8 @@
 CC       ?= cc
-CPPFLAGS ?=
+
 CFLAGS   ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function
 CFLAGS   += -std=c11
+CPPFLAGS ?=
 LDLIBS   ?=
 LDLIBS   += -ldry
 

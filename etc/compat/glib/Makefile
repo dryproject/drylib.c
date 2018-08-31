@@ -1,18 +1,20 @@
 CC       ?= cc
-CPPFLAGS ?=
-CPPFLAGS += -I ../../../src
-CPPFLAGS += -Wall -Wextra -Wno-unused-parameter -Wno-unused-function -Werror
-#CPPFLAGS += `pkg-config --cflags glib-2.0`
-CFLAGS   ?=
+
+CFLAGS   ?= -Wall -Wextra -Wno-unused-parameter -Wno-unused-function
 CFLAGS   += -std=c11
+CFLAGS   += $(shell pkg-config --cflags-only-other glib-2.0)
+CPPFLAGS ?=
+CPPFLAGS += $(shell pkg-config --cflags-only-I glib-2.0)
+CPPFLAGS += -I ../../../src
 LDFLAGS  ?=
-#LDFLAGS  += `pkg-config --libs glib-2.0`
+LDFLAGS  += $(shell pkg-config --libs-only-L glib-2.0)
+LDFLAGS  += $(shell pkg-config --libs-only-other glib-2.0)
+LDLIBS   ?=
+LDLIBS   += $(shell pkg-config --libs-only-l glib-2.0)
 
-PACKAGE  := drylib-glib
-
-TARGETS  := test
-OBJECTS  := test.o
 SOURCES  := test.c
+OBJECTS  := test.o
+TARGETS  := test
 
 %.o: %.c
 	$(CC) $(CFLAGS) $(CPPFLAGS) $(TARGET_ARCH) -o $@ -c $<
@@ -20,7 +22,7 @@ SOURCES  := test.c
 %: %.o
 	$(CC) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
 
-test: test.o ../../../dry.a
+test: test.o ../../../libdry.a
 
 all: $(TARGETS)
 
@@ -28,7 +30,7 @@ check: test
 	./test
 
 clean:
-	@rm -f *~ *.o $(TARGETS) $(OBJECTS)
+	@rm -f *~ $(TARGETS) $(OBJECTS)
 
 .PHONY: check clean
 .SECONDARY:
