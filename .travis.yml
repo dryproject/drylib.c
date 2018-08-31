@@ -11,8 +11,8 @@ matrix:
           packages:
             - g++-8
       env:
-        - CC="gcc-8 -std=c11"
-        - CXX="g++-8 -std=c++17"
+        - _CC="gcc-8 -std=c11"
+        - _CXX="g++-8 -std=c++17"
     - os: linux
       addons:
         apt:
@@ -22,9 +22,9 @@ matrix:
           packages:
             - clang-6.0
       env:
-        - CC="clang-6.0 -std=c11"
-        - CXX="clang++-6.0 -std=c++17"
+        - _CC="clang-6.0 -std=c11"
+        - _CXX="clang++-6.0 -std=c++17"
 before_install:
-  - export CC="$CC" CXX="$CXX"
+  - export CC="$_CC" CXX="$_CXX"
 script:
   - make && make check
