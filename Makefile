@@ -43,6 +43,8 @@ TARGETS  := libdry.a
 %: %.o
 	$(CC) $(LDFLAGS) $(TARGET_ARCH) -o $@ $^ $(LOADLIBES) $(LDLIBS)
 
+all: build
+
 drylib-c.pc: etc/pkgconfig/drylib-c.pc.in
 	$(SED) -e 's:@prefix@:$(prefix):g' -e 's:@version@:$(VERSION):g' $^ > $@
 
@@ -50,8 +52,6 @@ libdry.a: $(OBJECTS)
 	$(AR) rcs $@ $^ && $(RANLIB) $@
 
 test: test.o libdry.a
-
-all: build
 
 build: $(TARGETS)
 
@@ -77,7 +77,14 @@ install: installdirs drylib-c.pc $(TARGETS) $(HEADERS)
 	$(foreach file,$(HEADERS),$(INSTALL_DATA) $(file) $(DESTDIR)$(includedir)/$(file:src/%=%);)
 
 uninstall:
-	@echo "not implemented"; exit 2 # TODO
+	rm -f $(DESTDIR)$(libdir)/pkgconfig/drylib.pc
+	rm -f $(DESTDIR)$(libdir)/pkgconfig/drylib-c.pc
+	$(foreach file,$(TARGETS),rm -f $(DESTDIR)$(libdir)/$(file);)
+	$(foreach file,$(HEADERS),rm -f $(DESTDIR)$(includedir)/$(file:src/%=%);)
+	rmdir $(DESTDIR)$(includedir)/dry/base || true
+	rmdir $(DESTDIR)$(includedir)/dry/meta || true
+	rmdir $(DESTDIR)$(includedir)/dry/text || true
+	rmdir $(DESTDIR)$(includedir)/dry || true
 
 clean:
 	@rm -f test *~ *.o $(TARGETS) $(OBJECTS)
